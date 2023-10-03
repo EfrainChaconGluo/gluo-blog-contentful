@@ -78,6 +78,11 @@ export interface Fields {
   biography?: Biography;
 }
 
+export interface AuthorFields {
+  photo?: Photo;
+  fullName?: string;
+}
+
 export interface Thumbnail {
   sys: Sys6;
 }
