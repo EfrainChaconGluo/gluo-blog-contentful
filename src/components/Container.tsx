@@ -6,7 +6,5 @@ interface Props {
 }
 
 export default function Container({ children, className }: Props) {
-  return (
-    <section className={`max-w-7xl mx-auto ${className}`}>{children}</section>
-  );
+  return <div className={`max-w-7xl mx-auto ${className}`}>{children}</div>;
 }

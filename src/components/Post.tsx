@@ -3,6 +3,7 @@ import { getAssetById } from "@/app/lib/getAssetById";
 import { Fields } from "@/types/posts";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 export default async function Post({
   title,
@@ -21,23 +22,23 @@ export default async function Post({
   //   console.log(postAuthor);
   return (
     <article className="flex flex-col h-full">
-      <Image
-        src={`https:${image.fields.file.url}`}
-        alt={image.fields.title}
-        width={image.fields.file.details.image.width}
-        height={image.fields.file.details.image.height}
-        className="justify-self-center"
-      />
-      <div className="mt-auto flex flex-col gap-4">
+      <Link href={`/blog/${slug}`} className="flex flex-col gap-2 h-full">
+        <Image
+          src={`https:${image?.fields.file.url}`}
+          alt={image?.fields.title!}
+          width={image?.fields.file.details.image.width}
+          height={image?.fields.file.details.image.height}
+          className="justify-self-center"
+        />
         <h2 className="text-2xl">{title}</h2>
-        <div className="flex gap-4 mb-2">
+        <div className="mt-auto flex gap-4 mb-2">
           <small>Fecha: {new Date(createdAt!).toLocaleDateString()}</small>
           <small>{readingTime} min</small>
         </div>
-      </div>
+      </Link>
       <footer className="flex gap-2 items-center">
         <Image
-          src={`https:${authorImage.fields.file.url}`}
+          src={`https:${authorImage?.fields.file.url}`}
           alt={postAuthor?.fields.fullName!}
           width={100}
           height={100}

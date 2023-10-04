@@ -7,10 +7,7 @@ export default async function CategoriesNav() {
   return (
     <nav className="col-start-4 row-span-full h-full flex flex-col gap-2">
       {data?.items.map((tag) => (
-        <Link
-          href={`blog/category/${tag.name.toLowerCase().replaceAll(" ", "-")}`}
-          key={tag.sys.id}
-        >
+        <Link href={`/blog/category/${tag.sys.id}`} key={tag.sys.id}>
           {tag.name}
         </Link>
       ))}

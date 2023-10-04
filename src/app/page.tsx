@@ -1,14 +1,13 @@
 import Post from "@/components/Post";
-import { Item } from "@/types/posts";
 import { getAllPosts } from "./lib/getAllPosts";
 import Container from "@/components/Container";
 import CategoriesNav from "@/components/CategoriesNav";
 
 export default async function Home() {
-  const posts = (await getAllPosts()) as Item[];
+  const posts = await getAllPosts();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Container className="grid grid-cols-4 gap-4 items-center">
+    <main className="min-h-screen">
+      <Container className="grid grid-cols-3 gap-4 items-center">
         {posts?.map((post) => (
           <Post
             key={post.sys.id}
