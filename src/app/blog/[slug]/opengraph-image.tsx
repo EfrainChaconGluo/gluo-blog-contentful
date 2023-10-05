@@ -4,6 +4,8 @@ import Image from "next/image";
 import { ImageResponse } from "next/server";
 import React from "react";
 
+export const contentType = "image/webp";
+
 export default async function OgImage({
   params,
 }: {
@@ -14,12 +16,14 @@ export default async function OgImage({
   const postImage = await getAssetById(post?.items[0].fields.thumbnail?.sys.id);
   return new ImageResponse(
     (
-      <Image
-        src={`https:${postImage?.fields.file.url}`}
-        alt={postImage?.fields.file.fileName!}
-        width={300}
-        height={300}
-      />
+      <div className="w-32 h-32">
+        <Image
+          src={`https:${postImage?.fields.file.url}`}
+          alt={postImage?.fields.file.fileName!}
+          width={300}
+          height={300}
+        />
+      </div>
     )
   );
 }
