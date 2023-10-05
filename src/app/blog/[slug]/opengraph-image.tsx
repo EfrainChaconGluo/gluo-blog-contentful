@@ -17,11 +17,14 @@ export default async function OgImage({
 }) {
   const { slug } = params;
   const post = await getPostBySlug(slug);
-  //   const postImage = await getAssetById(post?.items[0].fields.thumbnail?.sys.id);
+  const postImage = await getAssetById(post?.items[0].fields.thumbnail?.sys.id);
   return new ImageResponse(
     (
       <div tw="flex justify-center items-center w-full h-full">
-        {post?.items[0].fields.title}
+        <img
+          src={postImage?.fields.file.url}
+          alt={postImage?.fields.file.fileName}
+        />
       </div>
     ),
     { ...size }
