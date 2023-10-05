@@ -24,6 +24,7 @@ export default async function OgImage({
         <img
           src={postImage?.fields.file.url}
           alt={postImage?.fields.file.fileName}
+          tw="flex w-full h-full"
         />
       </div>
     ),
