@@ -3,6 +3,7 @@ import { getAssetById } from "@/app/lib/getAssetById";
 import { getAuthorById } from "@/app/lib/getAuthorById";
 import { Asset, AuthorFields, Fields } from "@/types/posts";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export default function ClientPost({
@@ -45,20 +46,21 @@ export default function ClientPost({
     <article className="flex flex-col h-full">
       {postImage && postAuthor && authorImage ? (
         <>
-          <Image
-            src={`https:${postImage?.fields.file.url}`}
-            alt={postImage?.fields.title!}
-            width={postImage?.fields.file.details.image.width}
-            height={postImage?.fields.file.details.image.height}
-            className="justify-self-center"
-          />
-          <div className="mt-auto flex flex-col gap-4">
+          <Link href={`/blog/${slug}`} className="flex flex-col gap-2 h-full">
+            <Image
+              src={`https:${postImage?.fields.file.url}`}
+              alt={postImage?.fields.title!}
+              width={postImage?.fields.file.details.image.width}
+              height={postImage?.fields.file.details.image.height}
+              className="justify-self-center"
+            />
             <h2 className="text-2xl">{title}</h2>
-            <div className="flex gap-4 mb-2">
+            <div className="mt-auto flex gap-4 mb-2">
               <small>Fecha: {new Date(createdAt!).toLocaleDateString()}</small>
               <small>{readingTime} min</small>
             </div>
-          </div>
+          </Link>
+
           <footer className="flex gap-2 items-center">
             <Image
               src={`https:${authorImage?.fields.file.url}`}
