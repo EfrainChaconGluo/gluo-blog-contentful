@@ -17,11 +17,9 @@ export default async function OgImage({
   return new ImageResponse(
     (
       <div tw="flex w-32 h-32">
-        <Image
+        <img
           src={`https:${postImage?.fields.file.url}`}
           alt={postImage?.fields.file.fileName!}
-          width={300}
-          height={300}
           tw="flex"
         />
       </div>
