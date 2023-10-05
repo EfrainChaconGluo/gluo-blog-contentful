@@ -20,12 +20,14 @@ export default async function OgImage({
   const postImage = await getAssetById(post?.items[0].fields.thumbnail?.sys.id);
   return new ImageResponse(
     (
-      <div tw="flex justify-center items-center w-full h-full">
-        <img
-          src={postImage?.fields.file.url}
-          alt={postImage?.fields.file.fileName}
-          tw="flex w-full h-full"
-        />
+      <div tw="relative flex justify-center items-center w-full h-full">
+        <div tw="absolute flex inset-0">
+          <img
+            src={postImage?.fields.file.url}
+            alt={postImage?.fields.file.fileName}
+            tw="flex flex-1"
+          />
+        </div>
       </div>
     ),
     { ...size }
