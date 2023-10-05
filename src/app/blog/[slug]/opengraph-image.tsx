@@ -16,7 +16,7 @@ export default async function OgImage({
   const postImage = await getAssetById(post?.items[0].fields.thumbnail?.sys.id);
   return new ImageResponse(
     (
-      <div className="w-32 h-32">
+      <div tw="w-32 h-32">
         <Image
           src={`https:${postImage?.fields.file.url}`}
           alt={postImage?.fields.file.fileName!}
