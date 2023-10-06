@@ -8,15 +8,14 @@ import Link from "next/link";
 export default async function Post({
   title,
   thumbnail,
+  thumbnailPlaceholder,
   createdAt,
   readingTime,
-  metaDescription,
   slug,
-  excerpt,
   author,
-  metaKeywords,
 }: Fields) {
   const image = await getAssetById(thumbnail?.sys.id);
+  const placeholderImage = await getAssetById(thumbnailPlaceholder?.sys.id);
   const postAuthor = await getAuthorById(author?.sys.id);
   const authorImage = await getAssetById(postAuthor?.fields.photo?.sys.id);
   return (
@@ -27,6 +26,8 @@ export default async function Post({
           alt={image?.fields.title!}
           width={image?.fields.file.details.image.width}
           height={image?.fields.file.details.image.height}
+          placeholder="blur"
+          blurDataURL={`https:${placeholderImage?.fields.file.url}`}
           className="justify-self-center mb-2"
         />
         <h2 className="text-2xl text-black">{title}</h2>

@@ -16,11 +16,9 @@ export default async function Home() {
             thumbnail={post.fields.thumbnail}
             createdAt={post.fields.createdAt}
             readingTime={post.fields.readingTime}
-            metaDescription={post.fields.metaDescription}
             slug={post.fields.slug}
-            excerpt={post.fields.excerpt}
             author={post.fields.author}
-            metaKeywords={post.fields.metaKeywords}
+            thumbnailPlaceholder={post.fields.thumbnailPlaceholder}
           />
         ))}
       </Container>

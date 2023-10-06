@@ -66,6 +66,7 @@ export interface Sys5 {
 export interface Fields {
   title?: string;
   thumbnail?: Thumbnail;
+  thumbnailPlaceholder?: Thumbnail;
   createdAt?: string;
   readingTime?: number;
   metaDescription?: string;

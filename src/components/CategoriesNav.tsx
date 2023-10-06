@@ -4,6 +4,8 @@ import Link from "next/link";
 import { CategoryContext } from "@/context/ActiveCategoryProvider";
 import { getAllTags } from "@/lib/getAllTags";
 import { Root } from "@/types/tags";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function CategoriesNav() {
   const [tags, setTags] = useState<Root | undefined>();
@@ -18,9 +20,9 @@ export default function CategoriesNav() {
     };
     fetchTags();
   }, []);
-  return (
+  return tags ? (
     <nav className="col-span-full row-start-1 flex flex-wrap sm:flex-nowrap gap-8 sm:gap-12 mb-4">
-      {tags?.items.map((tag) => (
+      {tags.items.map((tag) => (
         <Link
           onClick={() => handleActiveCategory(tag.name)}
           href={`/blog/category/${tag.sys.id}`}
@@ -33,5 +35,9 @@ export default function CategoriesNav() {
         </Link>
       ))}
     </nav>
+  ) : (
+    <div className="col-span-full row-start-1">
+      <Skeleton height={30} width="50%" />
+    </div>
   );
 }
