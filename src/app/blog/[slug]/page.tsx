@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import Container from "@/components/Container";
@@ -26,9 +26,11 @@ import { getTagById } from "@/app/lib/getTagById";
 import { Item } from "@/types/tags";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { CategoryContext } from "@/app/context/ActiveCategoryProvider";
 
 export default function BlogArticle() {
   const { slug } = useParams();
+  const { handleActiveCategory } = useContext(CategoryContext);
   const [post, setPost] = useState<Root | undefined>();
   const [postImage, setPostImage] = useState<Asset | undefined>();
   const [postAuthor, setPostAuthor] = useState<
@@ -107,6 +109,7 @@ export default function BlogArticle() {
                     </small>
                   </div>
                   <Link
+                    onClick={() => handleActiveCategory(postTag?.name!)}
                     href={`/blog/category/${postTag?.sys.id}`}
                     className="bg-[#f7f4f0] w-fit text-sm py-2 px-4 rounded-full"
                   >
