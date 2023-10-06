@@ -2,8 +2,8 @@ import Container from "@/components/Container";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import CategoriesNav from "@/components/CategoriesNav";
 import Header from "@/components/Header";
+import ActiveCategoryProvider from "./context/ActiveCategoryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <Container className="p-24">{children}</Container>
-      </body>
-    </html>
+    <ActiveCategoryProvider>
+      <html lang="en">
+        <body className={`${inter.className} text-[#555]`}>
+          <Header />
+          <Container>{children}</Container>
+        </body>
+      </html>
+    </ActiveCategoryProvider>
   );
 }

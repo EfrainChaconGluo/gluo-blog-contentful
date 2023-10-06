@@ -7,7 +7,8 @@ export default async function Home() {
   const posts = await getAllPosts();
   return (
     <main className="min-h-screen">
-      <Container className="grid grid-cols-3 gap-4 items-center">
+      <Container className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 items-center p-4 md:p-16">
+        <CategoriesNav />
         {posts?.map((post) => (
           <Post
             key={post.sys.id}
@@ -22,7 +23,6 @@ export default async function Home() {
             metaKeywords={post.fields.metaKeywords}
           />
         ))}
-        <CategoriesNav />
       </Container>
     </main>
   );

@@ -19,7 +19,6 @@ export default async function Post({
   const image = await getAssetById(thumbnail?.sys.id);
   const postAuthor = await getAuthorById(author?.sys.id);
   const authorImage = await getAssetById(postAuthor?.fields.photo?.sys.id);
-  //   console.log(postAuthor);
   return (
     <article className="flex flex-col h-full">
       <Link href={`/blog/${slug}`} className="flex flex-col gap-2 h-full">
@@ -28,9 +27,9 @@ export default async function Post({
           alt={image?.fields.title!}
           width={image?.fields.file.details.image.width}
           height={image?.fields.file.details.image.height}
-          className="justify-self-center"
+          className="justify-self-center mb-2"
         />
-        <h2 className="text-2xl">{title}</h2>
+        <h2 className="text-2xl text-black">{title}</h2>
         <div className="mt-auto flex gap-4 mb-2">
           <small>Fecha: {new Date(createdAt!).toLocaleDateString()}</small>
           <small>{readingTime} min</small>

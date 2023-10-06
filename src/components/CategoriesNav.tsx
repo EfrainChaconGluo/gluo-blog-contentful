@@ -1,13 +1,34 @@
-import { getAllTags } from "@/app/lib/getAllTags";
+"use client";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import React from "react";
+import { CategoryContext } from "@/app/context/ActiveCategoryProvider";
+import { getAllTags } from "@/app/lib/getAllTags";
+import { Root } from "@/types/tags";
 
-export default async function CategoriesNav() {
-  const data = await getAllTags();
+export default function CategoriesNav() {
+  const [tags, setTags] = useState<Root | undefined>();
+  const { activeCategory, handleActiveCategory } = useContext(CategoryContext);
+  useEffect(() => {
+    if (!window.location.pathname.includes("category")) {
+      handleActiveCategory("");
+    }
+    const fetchTags = async () => {
+      const data = await getAllTags();
+      setTags(data);
+    };
+    fetchTags();
+  }, []);
   return (
-    <nav className="col-start-4 row-span-full h-full flex flex-col gap-2">
-      {data?.items.map((tag) => (
-        <Link href={`/blog/category/${tag.sys.id}`} key={tag.sys.id}>
+    <nav className="col-span-full row-start-1 flex flex-wrap sm:flex-nowrap gap-8 sm:gap-12 mb-4">
+      {tags?.items.map((tag) => (
+        <Link
+          onClick={() => handleActiveCategory(tag.name)}
+          href={`/blog/category/${tag.sys.id}`}
+          key={tag.sys.id}
+          className={`pb-2 border-b-[4px] hover:border-[#e8ff72] ${
+            activeCategory === tag.name ? "border-[#e8ff72]" : ""
+          }`}
+        >
           {tag.name}
         </Link>
       ))}
