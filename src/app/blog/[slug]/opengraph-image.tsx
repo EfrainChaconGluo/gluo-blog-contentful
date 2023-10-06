@@ -1,5 +1,5 @@
-import { getAssetById } from "@/app/lib/getAssetById";
-import { getPostBySlug } from "@/app/lib/getPostBySlug";
+import { getAssetById } from "@/lib/getAssetById";
+import { getPostBySlug } from "@/lib/getPostBySlug";
 import Image from "next/image";
 import { ImageResponse } from "next/server";
 import React from "react";

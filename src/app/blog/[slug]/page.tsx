@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import Container from "@/components/Container";
 import { Asset, AuthorFields, Root } from "@/types/posts";
-import { getAssetById } from "@/app/lib/getAssetById";
-import { getPostBySlug } from "@/app/lib/getPostBySlug";
-import { getAuthorById } from "@/app/lib/getAuthorById";
+import { getAssetById } from "@/lib/getAssetById";
+import { getPostBySlug } from "@/lib/getPostBySlug";
+import { getAuthorById } from "@/lib/getAuthorById";
 import Link from "next/link";
 import {
   Triangle,
@@ -22,11 +22,11 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
 } from "next-share";
-import { getTagById } from "@/app/lib/getTagById";
+import { getTagById } from "@/lib/getTagById";
 import { Item } from "@/types/tags";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { CategoryContext } from "@/app/context/ActiveCategoryProvider";
+import { CategoryContext } from "@/context/ActiveCategoryProvider";
 
 export default function BlogArticle() {
   const { slug } = useParams();

@@ -1,8 +1,8 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { CategoryContext } from "@/app/context/ActiveCategoryProvider";
-import { getAllTags } from "@/app/lib/getAllTags";
+import { CategoryContext } from "@/context/ActiveCategoryProvider";
+import { getAllTags } from "@/lib/getAllTags";
 import { Root } from "@/types/tags";
 
 export default function CategoriesNav() {

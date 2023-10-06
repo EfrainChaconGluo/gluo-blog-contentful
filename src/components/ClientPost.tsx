@@ -1,6 +1,6 @@
 "use client";
-import { getAssetById } from "@/app/lib/getAssetById";
-import { getAuthorById } from "@/app/lib/getAuthorById";
+import { getAssetById } from "@/lib/getAssetById";
+import { getAuthorById } from "@/lib/getAuthorById";
 import { Asset, AuthorFields, Fields } from "@/types/posts";
 import Image from "next/image";
 import Link from "next/link";

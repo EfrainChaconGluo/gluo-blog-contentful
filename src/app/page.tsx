@@ -1,5 +1,5 @@
 import Post from "@/components/Post";
-import { getAllPosts } from "./lib/getAllPosts";
+import { getAllPosts } from "../lib/getAllPosts";
 import Container from "@/components/Container";
 import CategoriesNav from "@/components/CategoriesNav";
 

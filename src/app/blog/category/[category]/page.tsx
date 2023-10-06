@@ -1,6 +1,6 @@
 "use client";
-import { getAllPosts } from "@/app/lib/getAllPosts";
-import { getPostsByTagId } from "@/app/lib/getPostsByTagId";
+import { getAllPosts } from "@/lib/getAllPosts";
+import { getPostsByTagId } from "@/lib/getPostsByTagId";
 import CategoriesNav from "@/components/CategoriesNav";
 import ClientPost from "@/components/ClientPost";
 import Container from "@/components/Container";

@@ -1,5 +1,5 @@
-import { getAuthorById } from "@/app/lib/getAuthorById";
-import { getAssetById } from "@/app/lib/getAssetById";
+import { getAuthorById } from "@/lib/getAuthorById";
+import { getAssetById } from "@/lib/getAssetById";
 import { Fields } from "@/types/posts";
 import Image from "next/image";
 import React from "react";
